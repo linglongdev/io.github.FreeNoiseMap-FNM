@@ -1,0 +1,55 @@
+From 7869a390c2320310c7ab966382243bdc38a0abfd Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Tue, 13 Aug 2024 14:22:58 +0800
+Subject: [PATCH] install
+
+---
+ code/FreeNoiseMap.desktop | 11 +++++++++++
+ code/FreeNoiseMap.pro     | 10 +++++++++-
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+ create mode 100644 code/FreeNoiseMap.desktop
+
+diff --git a/code/FreeNoiseMap.desktop b/code/FreeNoiseMap.desktop
+new file mode 100644
+index 0000000..721d058
+--- /dev/null
++++ b/code/FreeNoiseMap.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=FreeNoiseMap
++Name=FreeNoiseMap
++Name[zh_CN]=FreeNoiseMap
++Icon=FreeNoiseMap
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=FreeNoiseMap
++Version=1.0
+\ No newline at end of file
+diff --git a/code/FreeNoiseMap.pro b/code/FreeNoiseMap.pro
+index b5f3ea7..25cc1e6 100644
+--- a/code/FreeNoiseMap.pro
++++ b/code/FreeNoiseMap.pro
+@@ -60,9 +60,17 @@ HEADERS += \
+ 
+ # Default rules for deployment.
+ qnx: target.path = /tmp/$${TARGET}/bin
+-else: unix:!android: target.path = /opt/$${TARGET}/bin
++else: unix:!android: #target.path = /opt/$${TARGET}/bin
+ !isEmpty(target.path): INSTALLS += target
+ 
++target.path = $$PREFIX/bin
++desktop.files = FreeNoiseMap.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons
++icons.files = icons/FreeNoiseMap.png
++
++INSTALLS += target desktop icons
++
+ FORMS += \
+     mainwindow.ui
+ 
+-- 
+2.43.4
+
